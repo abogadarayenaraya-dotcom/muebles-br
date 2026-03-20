@@ -1,202 +1,487 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muebles BR - Muebles a Medida | Diseño y Fabricación</title>
-  <meta name="description" content="Muebles BR - Fabricación de muebles a medida, remodelación integral y diseño de interiores profesional en Santiago, Chile.">
-  <link rel="stylesheet" href="./assets/css/styles.css">
-  <style>
-    .logo-icon {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, #c49b63, #d4a574);
-      border-radius: 8px;
-      margin-right: 10px;
-      vertical-align: middle;
-      font-weight: bold;
-      text-align: center;
-      line-height: 40px;
-      color: white;
-      font-size: 24px;
-    }
-    .gallery-item img {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muebles BR | Diseño y Fabricación de Muebles a Medida</title>
+    <meta name="description" content="Especialistas en muebles de cocina, closets y remodelaciones integrales en Santiago. Calidad premium y diseño personalizado.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        :root {
+            --primary: #c49b63; /* Dorado/Madera */
+            --secondary: #2c3e50; /* Azul Oscuro */
+            --accent: #d4a574;
+            --white: #ffffff;
+            --light: #f8f9fa;
+            --dark: #1a1a1a;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 5px; }
+
+        /* --- Header & Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .logo-box {
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1556911223-e1520288c02b?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        /* --- Carousel Section (Catálogo) --- */
+        .catalog-section {
+            padding: 100px 5%;
+            background: var(--light);
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-info {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            background: rgba(255,255,255,0.9);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: left;
+            max-width: 400px;
+        }
+
+        .carousel-info h3 { color: var(--secondary); margin-bottom: 10px; }
+        .carousel-info p { font-size: 0.9rem; color: #666; }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        .carousel-btn:hover { background: var(--secondary); }
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        /* --- Services --- */
+        .services {
+            padding: 100px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* --- Contact --- */
+        .contact {
+            background: var(--secondary);
+            color: white;
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .info-item { display: flex; align-items: center; gap: 15px; }
+        .info-item i { color: var(--primary); font-size: 1.5rem; }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        footer {
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* --- Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 1s all ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            header { padding: 15px 5%; }
+            nav { display: none; }
+            .carousel-slide img { height: 400px; }
+            .carousel-info { display: none; }
+        }
+    </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <nav>
-      <a href="#inicio" class="logo"><div class="logo-icon">🏠</div>home <span>BR</span> muebles</a>
-      <ul class="nav-links">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#galeria">Galería</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero" id="inicio">
-    <h1>Muebles a Medida para tu Hogar</h1>
-    <p>Diseño, fabricación y remodelación con la más alta calidad</p>
-    <a href="#contacto" class="cta-button">Solicita tu Presupuesto</a>
-  </section>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-box"><i class="fas fa-hammer"></i></div>
+            <span>Muebles <span style="color: var(--primary);">BR</span></span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#catalog">Catálogo</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- SERVICIOS -->
-  <section class="services" id="servicios">
-    <h2 class="section-title">Nuestros Servicios</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🛋️</div>
-        <h3>Muebles a Medida</h3>
-        <p>Diseñamos y fabricamos muebles personalizados adaptados perfectamente a tus espacios y necesidades. Desde cocinas integrales hasta closets y librerías de alta calidad.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🏠</div>
-        <h3>Remodelación Integral</h3>
-        <p>Transformamos tus espacios con proyectos integrales de remodelación y renovación de ambientes. Utilizamos materiales premium y técnicas profesionales.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">✨</div>
-        <h3>Diseño de Interiores</h3>
-        <p>Creamos ambientes únicos y funcionales que reflejan tu estilo y personalidad. Asesoría integral en decoración, distribución de espacios y selección de materiales.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <h1 class="animate__animated animate__fadeInDown">Espacios que Inspiran</h1>
+        <p class="animate__animated animate__fadeInUp animate__delay-1s">Fabricamos tus sueños a medida. Especialistas en cocinas modernas, closets funcionales y diseño de interiores premium.</p>
+        <a href="#contact" class="btn-primary animate__animated animate__zoomIn animate__delay-2s">Solicitar Cotización</a>
+    </section>
 
-  <!-- GALERIA -->
-  <section class="gallery" id="galeria">
-    <h2 class="section-title">Nuestros Proyectos</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#8B7355;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#A0826D;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#grad1)"/>
-          <rect x="40" y="80" width="320" height="180" fill="#C4A574" opacity="0.8"/>
-          <rect x="60" y="100" width="280" height="140" fill="#D4B896"/>
-          <text x="200" y="170" font-size="24" font-weight="bold" text-anchor="middle" fill="#654321">Cocina a Medida</text>
-          <text x="200" y="200" font-size="14" text-anchor="middle" fill="#654321">Proyecto Profesional</text>
-        </svg>
-      </div>
-      <div class="gallery-item">
-        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#34495e;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#grad2)"/>
-          <rect x="50" y="60" width="150" height="200" fill="#7f8c8d" opacity="0.7"/>
-          <rect x="220" y="60" width="150" height="200" fill="#95a5a6" opacity="0.7"/>
-          <text x="200" y="170" font-size="20" font-weight="bold" text-anchor="middle" fill="white">Diseño Interior</text>
-          <text x="200" y="200" font-size="14" text-anchor="middle" fill="white">Moderno y Funcional</text>
-        </svg>
-      </div>
-      <div class="gallery-item">
-        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#E8D5C4;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#D4C4B0;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#grad3)"/>
-          <rect x="80" y="100" width="240" height="160" fill="#C4A574"/>
-          <line x1="160" y1="100" x2="160" y2="260" stroke="#9d8863" stroke-width="2"/>
-          <line x1="240" y1="100" x2="240" y2="260" stroke="#9d8863" stroke-width="2"/>
-          <text x="200" y="170" font-size="22" font-weight="bold" text-anchor="middle" fill="#654321">Closet Personalizado</text>
-        </svg>
-      </div>
-      <div class="gallery-item">
-        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="grad4" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style="stop-color:#f0e6d2;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#d9cdb8;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#grad4)"/>
-          <rect x="60" y="120" width="280" height="140" fill="#a0826d" rx="10"/>
-          <rect x="80" y="140" width="120" height="100" fill="#c4a574" opacity="0.8"/>
-          <rect x="220" y="140" width="120" height="100" fill="#d4b896" opacity="0.8"/>
-          <text x="200" y="180" font-size="20" font-weight="bold" text-anchor="middle" fill="#fff">Sala Moderna</text>
-        </svg>
-      </div>
-      <div class="gallery-item">
-        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#34495e;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#2c3e50;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#grad5)"/>
-          <circle cx="100" cy="100" r="40" fill="#c49b63"/>
-          <circle cx="300" cy="200" r="50" fill="#d4a574"/>
-          <rect x="150" y="150" width="100" height="80" fill="#95a5a6" opacity="0.6"/>
-          <text x="200" y="170" font-size="20" font-weight="bold" text-anchor="middle" fill="#fff">Interior Residencial</text>
-        </svg>
-      </div>
-      <div class="gallery-item">
-        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="grad6" x1="0%" y1="50%" x2="100%" y2="50%">
-              <stop offset="0%" style="stop-color:#C4A574;stop-opacity:1" />
-              <stop offset="50%" style="stop-color:#D4B896;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#A0826D;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#grad6)"/>
-          <rect x="40" y="60" width="320" height="180" fill="#f0e6d2" opacity="0.7" rx="10"/>
-          <rect x="70" y="90" width="260" height="120" fill="#d9cdb8" rx="5"/>
-          <text x="200" y="150" font-size="22" font-weight="bold" text-anchor="middle" fill="#654321">Remodelación Integral</text>
-        </svg>
-      </div>
-    </div>
-  </section>
+    <!-- Catalog Carousel -->
+    <section class="catalog-section" id="catalog">
+        <h2 class="section-title reveal">Nuestro Catálogo</h2>
+        <div class="carousel-container reveal">
+            <button class="carousel-btn prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-track">
+                <!-- Slide 1 -->
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1556911261-6bd7411630c3?auto=format&fit=crop&w=1200&q=80" alt="Cocina">
+                    <div class="carousel-info">
+                        <h3>Cocinas de Vanguardia</h3>
+                        <p>Diseños minimalistas con materiales de alta resistencia y acabados de lujo.</p>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1200&q=80" alt="Closet">
+                    <div class="carousel-info">
+                        <h3>Closets Inteligentes</h3>
+                        <p>Optimización máxima de espacio con sistemas de organización a medida.</p>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7eaa511?auto=format&fit=crop&w=1200&q=80" alt="Dormitorio">
+                    <div class="carousel-info">
+                        <h3>Dormitorios Premium</h3>
+                        <p>Muebles de dormitorio que combinan confort y elegancia para tu descanso.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
 
-  <!-- CONTACTO -->
-  <section class="contact" id="contacto">
-    <h2>¿Listo para tu Proyecto?</h2>
-    <p>Contáctanos y hagamos realidad tus ideas</p>
-    <div class="contact-info">
-      <div class="contact-item">
-        <span>📞</span>
-        <span><a href="tel:+56912345678" style="color: inherit; text-decoration: none;">+56 9 1234 5678</a></span>
-      </div>
-      <div class="contact-item">
-        <span>📧</span>
-        <span><a href="mailto:contacto@mueblesbr.cl" style="color: inherit; text-decoration: none;">contacto@mueblesbr.cl</a></span>
-      </div>
-      <div class="contact-item">
-        <span>📍</span>
-        <span>San Miguel, Santiago, Chile</span>
-      </div>
-    </div>
-    <a href="https://wa.me/56912345678" class="cta-button" target="_blank" rel="noopener noreferrer" style="margin-top: 2rem;">Contáctanos por WhatsApp</a>
-  </section>
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="service-card reveal">
+            <i class="fas fa-pencil-ruler"></i>
+            <h3>Diseño 3D Personalizado</h3>
+            <p>Visualiza tu proyecto antes de fabricarlo con nuestros renders realistas.</p>
+        </div>
+        <div class="service-card reveal">
+            <i class="fas fa-tools"></i>
+            <h3>Fabricación Propia</h3>
+            <p>Controlamos cada detalle en nuestro taller con tecnología de punta.</p>
+        </div>
+        <div class="service-card reveal">
+            <i class="fas fa-truck-loading"></i>
+            <h3>Instalación Profesional</h3>
+            <p>Equipo experto para un montaje limpio, rápido y perfecto.</p>
+        </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2026 home BR muebles - Todos los derechos reservados</p>
-  </footer>
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <h2 class="section-title" style="color: white; border-bottom: none;">Contáctanos</h2>
+        <p>¿Tienes un proyecto en mente? Hagámoslo realidad juntos.</p>
+        <div class="contact-info">
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <span>+56 9 1234 5678</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <span>contacto@mueblesbr.cl</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Santiago, Chile</span>
+            </div>
+        </div>
+        <div style="margin-top: 50px;">
+            <a href="https://wa.me/56912345678" class="btn-primary" style="background: #25d366; border-color: #25d366;">
+                <i class="fab fa-whatsapp"></i> Hablar por WhatsApp
+            </a>
+        </div>
+    </section>
 
-  <!-- WHATSAPP BUTTON -->
-  <a href="https://wa.me/56912345678" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Contáctanos por WhatsApp">&#128172;</a>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/56912345678" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-  <script src="./assets/js/script.js"></script>
+    <footer>
+        <p>&copy; 2024 Muebles BR - Calidad que se nota. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // --- Carousel Logic ---
+        let currentSlide = 0;
+        const track = document.querySelector('.carousel-track');
+        const slides = document.querySelectorAll('.carousel-slide');
+
+        function moveSlide(direction) {
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Autoplay carousel
+        setInterval(() => moveSlide(1), 5000);
+
+        // --- Scroll Reveal Animation ---
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Initial check
+        reveal();
+
+        // Smooth scrolling for nav links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
