@@ -1,370 +1,202 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muebles BR - Muebles a Medida | Diseño y Fabricación</title>
-    <meta name="description" content="Muebles BR - Fabricación de muebles a medida, remodelación y diseño de interiores. Calidad y profesionalismo en cada proyecto.">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #c49b63;
-            --accent-color: #e67e22;
-            --text-dark: #2c3e50;
-            --text-light: #7f8c8d;
-            --bg-light: #f8f9fa;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
-
-        /* Header & Navigation */
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .logo span {
-            color: var(--secondary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
-            color: var(--white);
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--secondary-color);
-            color: var(--white);
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(196, 155, 99, 0.3);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        /* Gallery Section */
-        .gallery {
-            background: var(--bg-light);
-            padding: 4rem 2rem;
-        }
-
-        .gallery-grid {
-            max-width: 1200px;
-            margin: 2rem auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            height: 300px;
-            background: var(--primary-color);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: transform 0.3s;
-            text-decoration: none;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        .whatsapp-float::before {
-            content: "💬";
-            font-size: 2rem;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a252f;
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .services-grid,
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muebles BR - Muebles a Medida | Diseño y Fabricación</title>
+  <meta name="description" content="Muebles BR - Fabricación de muebles a medida, remodelación integral y diseño de interiores profesional en Santiago, Chile.">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <style>
+    .logo-icon {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #c49b63, #d4a574);
+      border-radius: 8px;
+      margin-right: 10px;
+      vertical-align: middle;
+      font-weight: bold;
+      text-align: center;
+      line-height: 40px;
+      color: white;
+      font-size: 24px;
+    }
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">home <span>BR</span> muebles</div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="#inicio" class="logo"><div class="logo-icon">🏠</div>home <span>BR</span> muebles</a>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <h1>Muebles a Medida para tu Hogar</h1>
-        <p>Diseño, fabricación y remodelación con la más alta calidad</p>
-        <a href="#contacto" class="cta-button">Solicita tu Presupuesto</a>
-    </section>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <h1>Muebles a Medida para tu Hogar</h1>
+    <p>Diseño, fabricación y remodelación con la más alta calidad</p>
+    <a href="#contacto" class="cta-button">Solicita tu Presupuesto</a>
+  </section>
 
-    <!-- Services Section -->
-    <section class="services" id="servicios">
-        <h2 class="section-title">Nuestros Servicios</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🛋️</div>
-                <h3>Muebles a Medida</h3>
-                <p>Diseñamos y fabricamos muebles personalizados adaptados perfectamente a tus espacios y necesidades.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🏠</div>
-                <h3>Remodelación</h3>
-                <p>Transformamos tus espacios con proyectos integrales de remodelación y renovación de ambientes.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">✨</div>
-                <h3>Diseño de Interiores</h3>
-                <p>Creamos ambientes únicos y funcionales que reflejan tu estilo y personalidad.</p>
-            </div>
-        </div>
-    </section>
+  <!-- SERVICIOS -->
+  <section class="services" id="servicios">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🛋️</div>
+        <h3>Muebles a Medida</h3>
+        <p>Diseñamos y fabricamos muebles personalizados adaptados perfectamente a tus espacios y necesidades. Desde cocinas integrales hasta closets y librerías de alta calidad.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <h3>Remodelación Integral</h3>
+        <p>Transformamos tus espacios con proyectos integrales de remodelación y renovación de ambientes. Utilizamos materiales premium y técnicas profesionales.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✨</div>
+        <h3>Diseño de Interiores</h3>
+        <p>Creamos ambientes únicos y funcionales que reflejan tu estilo y personalidad. Asesoría integral en decoración, distribución de espacios y selección de materiales.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery" id="galeria">
-        <h2 class="section-title">Nuestros Proyectos</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <!-- Placeholder para imágenes -->
-            </div>
-            <div class="gallery-item">
-                <!-- Placeholder para imágenes -->
-            </div>
-            <div class="gallery-item">
-                <!-- Placeholder para imágenes -->
-            </div>
-            <div class="gallery-item">
-                <!-- Placeholder para imágenes -->
-            </div>
-            <div class="gallery-item">
-                <!-- Placeholder para imágenes -->
-            </div>
-            <div class="gallery-item">
-                <!-- Placeholder para imágenes -->
-            </div>
-        </div>
-    </section>
+  <!-- GALERIA -->
+  <section class="gallery" id="galeria">
+    <h2 class="section-title">Nuestros Proyectos</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#8B7355;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#A0826D;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#grad1)"/>
+          <rect x="40" y="80" width="320" height="180" fill="#C4A574" opacity="0.8"/>
+          <rect x="60" y="100" width="280" height="140" fill="#D4B896"/>
+          <text x="200" y="170" font-size="24" font-weight="bold" text-anchor="middle" fill="#654321">Cocina a Medida</text>
+          <text x="200" y="200" font-size="14" text-anchor="middle" fill="#654321">Proyecto Profesional</text>
+        </svg>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#34495e;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#grad2)"/>
+          <rect x="50" y="60" width="150" height="200" fill="#7f8c8d" opacity="0.7"/>
+          <rect x="220" y="60" width="150" height="200" fill="#95a5a6" opacity="0.7"/>
+          <text x="200" y="170" font-size="20" font-weight="bold" text-anchor="middle" fill="white">Diseño Interior</text>
+          <text x="200" y="200" font-size="14" text-anchor="middle" fill="white">Moderno y Funcional</text>
+        </svg>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#E8D5C4;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#D4C4B0;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#grad3)"/>
+          <rect x="80" y="100" width="240" height="160" fill="#C4A574"/>
+          <line x1="160" y1="100" x2="160" y2="260" stroke="#9d8863" stroke-width="2"/>
+          <line x1="240" y1="100" x2="240" y2="260" stroke="#9d8863" stroke-width="2"/>
+          <text x="200" y="170" font-size="22" font-weight="bold" text-anchor="middle" fill="#654321">Closet Personalizado</text>
+        </svg>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad4" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#f0e6d2;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#d9cdb8;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#grad4)"/>
+          <rect x="60" y="120" width="280" height="140" fill="#a0826d" rx="10"/>
+          <rect x="80" y="140" width="120" height="100" fill="#c4a574" opacity="0.8"/>
+          <rect x="220" y="140" width="120" height="100" fill="#d4b896" opacity="0.8"/>
+          <text x="200" y="180" font-size="20" font-weight="bold" text-anchor="middle" fill="#fff">Sala Moderna</text>
+        </svg>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#34495e;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#2c3e50;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#grad5)"/>
+          <circle cx="100" cy="100" r="40" fill="#c49b63"/>
+          <circle cx="300" cy="200" r="50" fill="#d4a574"/>
+          <rect x="150" y="150" width="100" height="80" fill="#95a5a6" opacity="0.6"/>
+          <text x="200" y="170" font-size="20" font-weight="bold" text-anchor="middle" fill="#fff">Interior Residencial</text>
+        </svg>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad6" x1="0%" y1="50%" x2="100%" y2="50%">
+              <stop offset="0%" style="stop-color:#C4A574;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#D4B896;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#A0826D;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#grad6)"/>
+          <rect x="40" y="60" width="320" height="180" fill="#f0e6d2" opacity="0.7" rx="10"/>
+          <rect x="70" y="90" width="260" height="120" fill="#d9cdb8" rx="5"/>
+          <text x="200" y="150" font-size="22" font-weight="bold" text-anchor="middle" fill="#654321">Remodelación Integral</text>
+        </svg>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contacto">
-        <h2>¿Listo para tu Proyecto?</h2>
-        <p>Contáctanos y hagamos realidad tus ideas</p>
-        <div class="contact-info">
-            <div class="contact-item">
-                <span>📞</span>
-                <span>+56 9 XXXX XXXX</span>
-            </div>
-            <div class="contact-item">
-                <span>📧</span>
-                <span>contacto@mueblesbr.cl</span>
-            </div>
-            <div class="contact-item">
-                <span>📍</span>
-                <span>Santiago, Chile</span>
-            </div>
-        </div>
-        <a href="#" class="cta-button" style="margin-top: 2rem;">Contáctanos por WhatsApp</a>
-    </section>
+  <!-- CONTACTO -->
+  <section class="contact" id="contacto">
+    <h2>¿Listo para tu Proyecto?</h2>
+    <p>Contáctanos y hagamos realidad tus ideas</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <span>📞</span>
+        <span><a href="tel:+56912345678" style="color: inherit; text-decoration: none;">+56 9 1234 5678</a></span>
+      </div>
+      <div class="contact-item">
+        <span>📧</span>
+        <span><a href="mailto:contacto@mueblesbr.cl" style="color: inherit; text-decoration: none;">contacto@mueblesbr.cl</a></span>
+      </div>
+      <div class="contact-item">
+        <span>📍</span>
+        <span>San Miguel, Santiago, Chile</span>
+      </div>
+    </div>
+    <a href="https://wa.me/56912345678" class="cta-button" target="_blank" rel="noopener noreferrer" style="margin-top: 2rem;">Contáctanos por WhatsApp</a>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 home BR muebles - Todos los derechos reservados</p>
-    </footer>
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 home BR muebles - Todos los derechos reservados</p>
+  </footer>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/56XXXXXXXXX" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp"></a>
+  <!-- WHATSAPP BUTTON -->
+  <a href="https://wa.me/56912345678" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Contáctanos por WhatsApp">&#128172;</a>
 
+  <script src="./assets/js/script.js"></script>
 </body>
-      <script src="./assets/js/script.js"></script>
 </html>
